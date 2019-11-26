@@ -1,18 +1,11 @@
 import numpy as np
-from sklearn.datasets import load_breast_cancer
 from sklearn.exceptions import NotFittedError
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
+
+from mlscratch import losses
 
 
 def sigmoid(x: np.ndarray) -> np.ndarray:
     return 1 / (1 + np.exp(-x))
-
-
-def binary_cross_entropy_error(y_true, y_pred, size_average=True, eps=1e-8):
-    log_y = np.log(y_pred+eps)
-    error = y_true.dot(log_y) + (1 - y_true).dot(log_y)
-    return error.mean() if size_average else error.sum()
 
 
 class LogisticRegression(object):
@@ -59,7 +52,8 @@ class LogisticRegression(object):
             self.theta = \
                 self.theta - self.lr*(1/data_size)*(X.T.dot(y_pred - y))
             # Calculate BinaryCrossEntropy.
-            bce = binary_cross_entropy_error(y, y_pred)
+            # bce = losses.binary_cross_entropy(y, y_pred)
+            bce = losses.binary_cross_entropy(y, y_pred)
             if self.verbose:
                 print(f'num_iterations: {n_iter}\t BCE: {bce}')
 
@@ -79,16 +73,3 @@ class LogisticRegression(object):
             raise NotFittedError(f'{self.__class__.__name__} is not fitted.'
                                  f' You must call fit before call predict.')
         return sigmoid(X.dot(self.theta))
-
-
-if __name__ == '__main__':
-    X, y = load_breast_cancer(return_X_y=True)
-    X_train, X_test, y_train, y_test = train_test_split(X, y)
-
-    model = LogisticRegression()
-
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-
-    acc = accuracy_score(y_test, y_pred)
-    print(f'Accuracy: {acc}')
