@@ -3,16 +3,8 @@ import unittest
 import numpy as np
 from sklearn.datasets import load_breast_cancer
 
-from mlscratch.logistic_regression import sigmoid, LogisticRegression
+from mlscratch.logistic_regression import LogisticRegression
 
-
-class TestSigmoid(unittest.TestCase):
-
-    def test_return(self):
-        ret = sigmoid(np.array([0, 1]))
-
-        self.assertIsInstance(ret, np.ndarray)
-        self.assertAlmostEqual(ret[0], 0.5)
 
 
 class TestLogisticRegression(unittest.TestCase):

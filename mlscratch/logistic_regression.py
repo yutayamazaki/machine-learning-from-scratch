@@ -2,10 +2,7 @@ import numpy as np
 from sklearn.exceptions import NotFittedError
 
 from mlscratch import losses
-
-
-def sigmoid(x: np.ndarray) -> np.ndarray:
-    return 1 / (1 + np.exp(-x))
+from mlscratch.activations import sigmoid
 
 
 class LogisticRegression(object):
