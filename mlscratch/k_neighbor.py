@@ -25,9 +25,9 @@ class KNN:
             raise ValueError(f'{self} is not fitted.')
 
         y_pred = []
-        for idx, x in enumerate(X):
+        for x in X:
             distances = []
-            for jdx, x_train in enumerate(self.X):
+            for x_train in self.X:
                 distance = self.euclidean_distance(x, x_train)
                 distances.append(distance)
             # Get indices of nearest neighbors.
