@@ -3,7 +3,7 @@ import sys
 import numpy as np
 
 sys.path.append('../')
-from mlscratch.perceptron import Perceptron
+from mlscratch.models.perceptron import Perceptron
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 
 sys.path.append('..')
-from mlscratch.logistic_regression import LogisticRegression
+from mlscratch.models.logistic_regression import LogisticRegression
 from mlscratch.metrics import accuracy_score
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from mlscratch import losses
+from mlscratch.models import losses
 
 
 class TestBinaryCrossEntropy(unittest.TestCase):

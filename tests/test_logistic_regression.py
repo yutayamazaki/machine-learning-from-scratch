@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 from sklearn.datasets import load_breast_cancer
 
-from mlscratch.logistic_regression import LogisticRegression
+from mlscratch.models.logistic_regression import LogisticRegression
 
 
 

@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from mlscratch.perceptron import Perceptron
+from mlscratch.models.perceptron import Perceptron
 
 
 

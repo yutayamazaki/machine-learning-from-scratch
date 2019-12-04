@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from mlscratch.k_neighbor import KNN
+from mlscratch.models.k_neighbor import KNN
 
 
 class TestKNN(unittest.TestCase):

@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from mlscratch import activations
+from mlscratch.models import activations
 
 
 class TestSigmoid(unittest.TestCase):

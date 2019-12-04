@@ -1,6 +1,6 @@
 import numpy as np
 
-from mlscratch.activations import relu
+from mlscratch.models.activations import relu
 
 
 class Perceptron:

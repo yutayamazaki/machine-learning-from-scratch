@@ -1,8 +1,8 @@
 import numpy as np
 from sklearn.exceptions import NotFittedError
 
-from mlscratch import losses
-from mlscratch.activations import sigmoid
+from mlscratch.models import losses
+from mlscratch.models.activations import sigmoid
 
 
 class LogisticRegression(object):
