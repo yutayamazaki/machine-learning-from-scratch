@@ -1,14 +1,6 @@
 import numpy as np
 
 
-def minmaxscaler(matrix):
-    x_min = np.min(matrix, axis=0)
-    x_max = np.max(matrix - x_min, axis=0)
-
-    scaled = (matrix - x_min) / x_max
-    return scaled
-
-
 class MinMaxScaler:
 
     def fit(self, X, y=None):
@@ -22,19 +14,3 @@ class MinMaxScaler:
     def fit_transform(self, X, y=None):
         self.fit(X, y)
         return self.transform(X, y)
-
-
-if __name__ == '__main__':
-
-    mat = np.array([
-        [0, 1, 2],
-        [5, 0, 1]
-    ])
-    mat = minmaxscaler(mat)
-    print(mat)
-
-    mat = np.array([
-        [0, 1, 2],
-        [5, 0, 1]
-    ])
-    print(MinMaxScaler_().fit_transform(mat))
