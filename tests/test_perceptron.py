@@ -24,10 +24,8 @@ class TestPerceptron(unittest.TestCase):
         x = np.array([[0, 1], [0, 1]])
         weight = self.model._init_weights(x)
         result = self.model.forward(x[0], weight)
-
-        expected = np.array(0)
+        expected = np.float(0.)
         self.assertAlmostEqual(result, expected)
-        self.assertIsInstance(result, np.ndarray)
 
     def test_forward_raise_if_ndim_eq_one(self):
         """ Check it raises ValueError if x.ndim is not 1. """
