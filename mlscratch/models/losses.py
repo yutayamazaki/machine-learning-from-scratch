@@ -6,5 +6,6 @@ def binary_cross_entropy(y_true, y_pred, size_average=True, eps=1e-8):
     error = y_true.dot(log_y) + (1 - y_true).dot(log_y)
     return error.mean() if size_average else error.sum()
 
+
 def mean_squared_error(y_true, y_pred):
     return np.mean((y_true - y_pred) ** 2)

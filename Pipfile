@@ -4,10 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+flake8 = "*"
+autopep8 = "*"
 
 [packages]
 numpy = "*"
 scikit-learn = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
