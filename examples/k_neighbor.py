@@ -12,7 +12,8 @@ from mlscratch.metrics import accuracy_score
 if __name__ == '__main__':
     X, y = load_iris(return_X_y=True)
     X = StandardScaler().fit_transform(X)
-    X_train, X_valid, y_train, y_valid = train_test_split(X, y)
+    X_train, X_valid, y_train, y_valid = train_test_split(X, y, shuffle=True,
+                                                          random_state=27)
 
     model = KNN()
     model.fit(X_train, y_train)
