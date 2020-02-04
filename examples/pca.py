@@ -14,5 +14,6 @@ if __name__ == '__main__':
     X_reduced = PCA(num_components=2).fit_transform(X)
 
     plt.scatter(X_reduced[:, 0], X_reduced[:, 1], c=y)
-    plt.title('Scatter plot for iris dataset')
+    plt.colorbar()
+    plt.title('Scatter plot with iris dataset')
     plt.show()
