@@ -5,7 +5,7 @@
 |  アルゴリズム名  |  Python実装  |  解説  |  使用例  |
 | ---- | ---- | ---- | ---- |
 | k近傍法 |  [k_neighbor.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/mlscratch/models/k_neighbor.py)  |  [k_nearest_neighbor.md](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/docs/k_nearest_neighbor.md)  |  [k_neighbor.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/examples/k_neighbor.py)  |
-|  LinearRegression  |  [linear.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/mlscratch/models/linear.py)  |  Under construction  |  [linear_regression.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/examples/linear_regression.py)  |
+|  LinearRegression  |  [linear.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/mlscratch/models/linear.py)  |  [linear_regression.md](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/docs/linear_regression.md)  |  [linear_regression.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/examples/linear_regression.py)  |
 |  ロジスティック回帰  |  [logistic_regression.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/mlscratch/models/logistic_regression.py)  | None |  None  |
 |  PCA  |  [pca.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/mlscratch/decomposition/pca.py)  |  Under construction  |  [pca.py](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/examples/pca.py)  |
 
