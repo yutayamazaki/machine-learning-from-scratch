@@ -8,4 +8,4 @@ def binary_cross_entropy(y_true, y_pred, size_average=True, eps=1e-8):
 
 
 def mean_squared_error(y_true, y_pred):
-    return np.mean((y_true - y_pred) ** 2)
+    return np.power(y_true - y_pred, 2).mean()
