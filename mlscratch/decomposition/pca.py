@@ -1,5 +1,3 @@
-import math
-
 import numpy as np
 
 
@@ -32,5 +30,8 @@ class PCA(_BaseTransformer):
         return self
 
     def transform(self, X, y=None):
-        X_reduced = np.dot(self.X_scaled_, self.eig_vec_[:, :self.num_components])
+        X_reduced = np.dot(
+            self.X_scaled_,
+            self.eig_vec_[:, :self.num_components]
+        )
         return X_reduced
