@@ -6,7 +6,6 @@ import numpy as np
 from sklearn.datasets import load_iris
 
 from mlscratch.decomposition.pca import PCA
-from sklearn import decomposition
 
 if __name__ == '__main__':
     X, y = load_iris(return_X_y=True)
