@@ -3,7 +3,7 @@
 - 線形回帰とは以下の数式で表現される機械学習モデルである．重回帰分析ともいう．
 - 単純な数式で表現できることから，データやモデルの解釈性が高い．
 
-![線形回帰](https://github.com/yutayamazaki/Machine-Learning-Scratch/blob/master/docs/assets/linear_regression_math.png?raw=true)
+![線形回帰](https://latex.codecogs.com/gif.latex?%5Chat%7By_i%7D%3Dw_0&plus;%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx_iw_i)
 
 
 ## 線形回帰モデル
