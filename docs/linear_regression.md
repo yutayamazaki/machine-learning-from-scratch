@@ -1,12 +1,12 @@
 # 線形回帰(Linear Regression)
 ## 概要
-- 線形回帰とは以下の数式で表現される機械学習モデルである．重回帰分析ともいう．
-- 単純な数式で表現できることから，データやモデルの解釈性が高い．
+- 線形回帰とは以下の数式で表現される機械学習モデルである
+- 単純な数式で表現できることから，データやモデルの解釈性が高い
 
 ![線形回帰](https://latex.codecogs.com/gif.latex?%5Chat%7By_i%7D%3Dw_0&plus;%5Csum_%7Bi%3D1%7D%5E%7BN%7Dx_iw_i)
 
 ## 線形回帰モデルの学習
-線形回帰モデルで学習すべきパラメータは重みのwであり，一般的にはMean Squared Errorを最小化する様に学習を行う．  
+線形回帰モデルで学習すべきパラメータは重みのwであり，一般にMean Squared Errorを最小化する様に学習を行う．  
 
 ![Mean Squared Error](https://latex.codecogs.com/gif.latex?E%28w%29%3D%5Cfrac%7B1%7D%7B2N%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%5C%7B%5Chat%7By%7D_i-y_i%5C%7D%5E2)
 
