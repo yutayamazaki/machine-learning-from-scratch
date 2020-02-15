@@ -1,5 +1,7 @@
 # Machine-Learning-Scratch
 
+![GitHub Actions](https://github.com/yutayamazaki/Machine-Learning-Scratch/workflows/Python%20CI%20jobs/badge.svg)
+
 ## Python実装とアルゴリズム解説と例
 
 |  アルゴリズム名  |  Python実装  |  解説  |  使用例  |
