@@ -45,11 +45,10 @@ class LogisticRegression(object):
         for n_iter in np.arange(self.num_iterations):
             # Make a new prediction.
             y_pred = sigmoid(X.dot(self.theta))
+            dw = np.dot((y - y_pred), X) / data_size
             # Update parameters.
-            self.theta = \
-                self.theta - self.lr*(1/data_size)*(X.T.dot(y_pred - y))
+            self.theta += self.lr * dw
             # Calculate BinaryCrossEntropy.
-            # bce = losses.binary_cross_entropy(y, y_pred)
             bce = losses.binary_cross_entropy(y, y_pred)
             self.train_metric_list.append(bce)
             if self.verbose:
