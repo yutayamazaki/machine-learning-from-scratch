@@ -18,16 +18,16 @@ class LogisticRegression(object):
     def __init__(
         self,
         lr=0.001,
-        num_iterations=10000,
+        num_iterations=1000,
         threshold=0.5,
         verbose=True,
     ):
         self.lr = lr
         self.num_iterations = num_iterations
         self.threshold = threshold
-        # Parameters to train.
-        self.theta = None
+        self.theta = None  # Parameters to train
         self.verbose = verbose
+        self.train_metric_list = []
 
     @staticmethod
     def _initialize_parameters(X):
@@ -51,6 +51,7 @@ class LogisticRegression(object):
             # Calculate BinaryCrossEntropy.
             # bce = losses.binary_cross_entropy(y, y_pred)
             bce = losses.binary_cross_entropy(y, y_pred)
+            self.train_metric_list.append(bce)
             if self.verbose:
                 print(f'num_iterations: {n_iter}\t BCE: {bce}')
 
