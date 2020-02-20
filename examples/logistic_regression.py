@@ -1,5 +1,6 @@
 import sys
 
+import matplotlib.pyplot as plt
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 
@@ -18,3 +19,9 @@ if __name__ == '__main__':
 
     acc = accuracy_score(y_test, y_pred)
     print(f'Accuracy: {acc}')
+
+    plt.plot(model.train_metric_list)
+    plt.title('Training BCE')
+    plt.xlabel('Iterations')
+    plt.ylabel('Binary Cross Entropy')
+    plt.show()
