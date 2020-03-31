@@ -13,13 +13,14 @@ class AdaBoost(object):
     def fit(self, X, y):
         data_size = len(X)
         self.weights = np.full(data_size, 1 / len(X))
-        unique_classes = np.unique(y)
 
         for i in range(self.num_estimators):
             model = DecisionTreeClassifier()
             model.fit(X, y, sample_weight=self.weights)
             y_pred = model.predict(X)
-            error = self._calc_error_on_weak_classifier(X, y, y_pred, self.weights)
+            error = self._calc_error_on_weak_classifier(
+                X, y, y_pred, self.weights
+            )
             alpha = self._calc_alpha_of_weak_classifier(error)
             self.weights = self._update_weights(
                 self.weights,
@@ -28,7 +29,9 @@ class AdaBoost(object):
                 y_pred,
                 self.lr
             )
-            self.weights /= self.weights.sum()
+            incorrect = y_pred != y
+            self.weights *= \
+                np.exp(alpha * incorrect * ((self.weights > 0) | (alpha < 0)))
             self.models.append(model)
             self.alphas.append(alpha)
             if error <= 0.0:
@@ -51,37 +54,16 @@ class AdaBoost(object):
     def _calc_alpha_of_weak_classifier(error: float):
         if error == 0.:
             return 1e5
-        alpha = np.log1p((1 - error) / error)
+        elif error == 0.5:
+            return 1e-4
+        alpha = 0.5 * np.log((1. - error) / error)
         return alpha
 
     @staticmethod
     def _update_weights(weights, alpha, y_true, y_pred, lr):
         incorrect = y_pred != y_true
-        return -lr * weights * np.exp(alpha * incorrect * ((weights > 0) | (alpha < 0)))
-
-
-if __name__ == '__main__':
-    from sklearn.datasets import load_breast_cancer
-    from sklearn.metrics import accuracy_score
-    from sklearn.model_selection import train_test_split
-
-    model = AdaBoost(num_estimators=50)
-    X, y = load_breast_cancer(return_X_y=True)
-    X_train, X_valid, y_train, y_valid = train_test_split(X, y, shuffle=True, random_state=27)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_valid)
-    acc = accuracy_score(y_valid, y_pred)
-    print(acc)
-
-    model = DecisionTreeClassifier()
-    y_pred = model.fit(X_train, y_train).predict(X_valid)
-
-    acc = accuracy_score(y_valid, y_pred)
-    print(acc)
-
-    from sklearn.ensemble import AdaBoostClassifier
-    model = AdaBoostClassifier()
-    y_pred = model.fit(X_train, y_train).predict(X_valid)
-
-    acc = accuracy_score(y_valid, y_pred)
-    print(acc)
+        new_weights = \
+            -lr * weights * np.exp(
+                alpha * incorrect * ((weights > 0) | (alpha < 0))
+            )
+        return new_weights / new_weights.sum()
