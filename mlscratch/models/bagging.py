@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 
 
-def bootstrap_sampling(X, y=None, sample_size: float=1.0):
+def bootstrap_sampling(X, y=None, sample_size: float = 1.0):
     data_size = len(X)
     num_samples = int(data_size * sample_size)
 
@@ -14,7 +14,6 @@ def bootstrap_sampling(X, y=None, sample_size: float=1.0):
     if y is None:
         return X[sample_indices]
     return X[sample_indices], y[sample_indices]
-
 
 
 class Bagging(object):
