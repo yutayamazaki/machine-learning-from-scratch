@@ -19,7 +19,7 @@ jobs:
         pip install -r requirements.txt
     - name: Test
       run: |
-        python -m unittest discover tests
+        python -m pytest tests
     - name: Lint with flake8
       run: |
         cd mlscratch
