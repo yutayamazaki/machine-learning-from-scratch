@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 
 def bootstrap_sampling(X, y=None, sample_size: float = 1.0):
-    data_size = len(X)
+    data_size: int = len(X)
     num_samples = int(data_size * sample_size)
 
     sample_indices = np.random.choice(
@@ -32,8 +32,9 @@ class Bagging(object):
         return self
 
     def predict(self, X):
-        num_samples = len(X)
+        num_samples: int = len(X)
         y_pred = np.zeros(num_samples)
         for estimator in self.estimators:
             y_pred += estimator.predict(X)
-        return np.round(y_pred / len(self.estimators))
+        y_pred /= len(self.estimators)
+        return np.round(y_pred)
