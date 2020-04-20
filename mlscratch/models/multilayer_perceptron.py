@@ -96,6 +96,8 @@ class MLP:
             self.w1 -= self.lr * grad_w
             self.b1 -= self.lr * grad_b1
 
+        return self
+
     def predict(self, X):
         h_in = X.dot(self.w1) + self.b1
         h_out = self.sigmoid(h_in)
