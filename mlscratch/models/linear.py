@@ -65,3 +65,30 @@ class LinearRegression(object):
     def predict(self, X):
         y_pred = self.w[0] + np.dot(X, self.w[1:])
         return y_pred
+
+
+class Ridge:
+
+    """ Ridge regression.
+
+    Args:
+        alpha (float): A weight of regularization.
+
+    """
+
+    def __init__(self, alpha: float = 1.0):
+        self.alpha = alpha
+
+    def fit(self, X, y):
+        # 1-padding for first column
+        X = np.insert(X, 0, 1, axis=1)
+        identity_mat = np.eye(X.shape[1])
+        W = np.linalg.inv(
+            X.T.dot(X) + self.alpha * identity_mat
+        ).dot(X.T).dot(y)
+        self.coef_ = W[1:]
+        self.intercept_ = W[0]
+        return self
+
+    def predict(self, X):
+        return X.dot(self.coef_) + self.intercept_
