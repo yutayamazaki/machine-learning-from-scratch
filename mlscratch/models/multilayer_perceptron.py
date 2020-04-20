@@ -80,16 +80,16 @@ class MLP:
             out = h_out.dot(self.w2) + self.b2
             y_pred = self.softmax(out)
 
-            grad_wrt_out_l_input = \
+            grad_out = \
                 self.criterion.backward(y, y_pred) * self.softmax.backward(out)
-            grad_w2 = h_out.T.dot(grad_wrt_out_l_input)
-            grad_b2 = np.sum(grad_wrt_out_l_input, axis=0, keepdims=True)
+            grad_w2 = h_out.T.dot(grad_out)
+            grad_b2 = np.sum(grad_out, axis=0, keepdims=True)
 
-            grad_wrt_hidden_l_input = \
-                grad_wrt_out_l_input.dot(self.w2.T) * \
+            grad_hidden = \
+                grad_out.dot(self.w2.T) * \
                 self.sigmoid.backward(h_in)
-            grad_w = X.T.dot(grad_wrt_hidden_l_input)
-            grad_b1 = np.sum(grad_wrt_hidden_l_input, axis=0, keepdims=True)
+            grad_w = X.T.dot(grad_hidden)
+            grad_b1 = np.sum(grad_hidden, axis=0, keepdims=True)
 
             self.w2 -= self.lr * grad_w2
             self.b2 -= self.lr * grad_b2
@@ -99,6 +99,6 @@ class MLP:
     def predict(self, X):
         h_in = X.dot(self.w1) + self.b1
         h_out = self.sigmoid(h_in)
-        output_layer_input = h_out.dot(self.w2) + self.b2
-        y_pred = self.softmax.backward(output_layer_input)
+        out = h_out.dot(self.w2) + self.b2
+        y_pred = self.softmax.backward(out)
         return y_pred
