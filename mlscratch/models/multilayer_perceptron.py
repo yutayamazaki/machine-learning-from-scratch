@@ -43,7 +43,12 @@ class CrossEntropy:
 
 class MLP:
 
-    def __init__(self, num_hidden, num_iterations: int = 3000, lr: float = 0.01):
+    def __init__(
+        self,
+        num_hidden,
+        num_iterations: int = 3000,
+        lr: float = 0.01
+    ):
         self.num_hidden = num_hidden
         self.num_iterations = num_iterations
         self.lr = lr
@@ -55,12 +60,14 @@ class MLP:
         num_samples, num_features = X.shape
         _, num_outputs = y.shape
 
-        limit   = 1 / np.sqrt(num_features)
-        self.w1 = np.random.uniform(-limit, limit, (num_features, self.num_hidden))
+        limit = 1 / np.sqrt(num_features)
+        shape = (num_features, self.num_hidden)
+        self.w1 = np.random.uniform(-limit, limit, shape)
         self.b1 = np.zeros((1, self.num_hidden))
 
-        limit   = 1 / np.sqrt(self.num_hidden)
-        self.w2  = np.random.uniform(-limit, limit, (self.num_hidden, num_outputs))
+        limit = 1 / np.sqrt(self.num_hidden)
+        shape = (self.num_hidden, num_outputs)
+        self.w2 = np.random.uniform(-limit, limit, shape)
         self.b2 = np.zeros((1, num_outputs))
 
     def fit(self, X, y):
@@ -79,13 +86,14 @@ class MLP:
             grad_b2 = np.sum(grad_wrt_out_l_input, axis=0, keepdims=True)
 
             grad_wrt_hidden_l_input = \
-                grad_wrt_out_l_input.dot(self.w2.T) * self.sigmoid.backward(h_in)
+                grad_wrt_out_l_input.dot(self.w2.T) * \
+                self.sigmoid.backward(h_in)
             grad_w = X.T.dot(grad_wrt_hidden_l_input)
             grad_b1 = np.sum(grad_wrt_hidden_l_input, axis=0, keepdims=True)
 
-            self.w2  -= self.lr * grad_w2
+            self.w2 -= self.lr * grad_w2
             self.b2 -= self.lr * grad_b2
-            self.w1  -= self.lr * grad_w
+            self.w1 -= self.lr * grad_w
             self.b1 -= self.lr * grad_b1
 
     def predict(self, X):
