@@ -18,7 +18,7 @@ class GradientBoostingClassifier:
 
     def __init__(self, num_estimators: int = 100, lr: float = 0.1):
         self.num_estimators: int = num_estimators
-        self.lr: float = lr
+        self.lr: float = lr  # shrinkage rate
         self.objective = CrossEntropy()
         self.y_init = None
 
@@ -32,6 +32,7 @@ class GradientBoostingClassifier:
             estimator = DecisionTreeRegressor()
             estimator.fit(X, grad)
             update = estimator.predict(X)
+            # TODO: line searchによるgammaの計算
             y_pred -= np.multiply(self.lr, update)
             self.estimators.append(estimator)
 
